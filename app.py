@@ -251,7 +251,24 @@ Used by national teams like Italy or Croatia, the 5-3-2 is a defensive variation
 with three center-backs and two wing-backs dropping deep to form a line of five.
 
 Finally, the 4-1-4-1 has gained popularity in recent years due to its ability to maintain possession and protect the midfield zone. 
-The defensive midfielder acts as an anchor, while the four midfielders contribute pressure and attacking support."""
+The defensive midfielder acts as an anchor, while the four midfielders contribute pressure and attacking support.""",
+
+    """WORLD CUP ALL-TIME TOP SCORERS LIST:
+1. Miroslav Klose from Germany is the all-time leading goal scorer in World Cup history with 16 goals across 24 appearances.
+2. Ronaldo from Brazil is the second highest scorer with 15 goals in 19 appearances.
+3. Gerd Müller from West Germany scored 14 goals in only 13 appearances.
+4. Lionel Messi from Argentina has scored 13 goals in 26 World Cup appearances.
+5. Just Fontaine from France holds the record for most goals in a single tournament, with 13 goals in 6 appearances.
+6. Pelé from Brazil scored a total of 12 goals in 14 World Cup appearances.
+7. Kylian Mbappé from France has scored 12 goals in 14 appearances so far.
+8. Jürgen Klinsmann from Germany scored 11 goals in 17 World Cup matches.
+9. Sándor Kocsis from Hungary scored 11 goals in just 5 appearances.
+10. Grzegorz Lato from Poland scored 10 goals in 20 appearances.""",
+
+    """SLOVENIA NATIONAL TEAM RECORDS: Slovenia has qualified for the FIFA World Cup twice and the UEFA European Championship twice.
+SLOVENIA WORLD CUP HISTORY: At the 2010 FIFA World Cup, Slovenia achieved its first and only victory by defeating Algeria 1–0.,
+SLOVENIA EURO 2024: Slovenia reached the knockout stages of UEFA Euro 2024 for the first time after drawing all three group matches.
+SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which was Italy's only loss in their entire 2006 World Cup campaign.""",
 
 
 ]
@@ -263,7 +280,7 @@ The defensive midfielder acts as an anchor, while the four midfielders contribut
 @st.cache_resource(show_spinner="Loading embedding model...")
 def load_embedding_model():
     from langchain_huggingface import HuggingFaceEmbeddings
-    return HuggingFaceEmbeddings(model_name="paraphrase-multilingual-MiniLM-L6-v2")
+    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 
 @st.cache_resource(show_spinner="Building vector database...")
@@ -274,7 +291,7 @@ def build_vector_store(_documents: tuple):
 
     # --- Chunking ---
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
+        chunk_size=300,
         chunk_overlap=50,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
@@ -297,34 +314,27 @@ def build_vector_store(_documents: tuple):
 # SIDEBAR
 # ──────────────────────────────────────────────────────────────────────
 st.sidebar.title("My RAG App")
-page = st.sidebar.radio("Navigate", ["Home", "Search", "Explore Chunks"])
+page = st.sidebar.radio("Navigate", ["Home", "Search", "Statistics", "Trivia Quiz"])
 
 # ──────────────────────────────────────────────────────────────────────
 # HOME PAGE
 # ──────────────────────────────────────────────────────────────────────
+
 if page == "Home":
-    st.title("My RAG Knowledge Base")
-    st.markdown("""
-    Welcome! This app lets you **search documents by meaning**, not just keywords.
+    st.title("⚽ Football Intelligence RAG")
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("""
+        ### About the Knowledge Base
+        This AI-powered tool uses **Semantic Search** to explore the history, rules, and statistics of world football. 
+        Unlike traditional search, this app understands the *meaning* behind your questions.
+        """)
+        st.info("💡 **Pro Tip:** Try asking about the 'Origins of the game' or 'World Cup winners'.")
 
-    ### How it works
-    1. **Documents** are split into small chunks
-    2. Each chunk is converted to an **embedding** (a vector of numbers)
-    3. Chunks are stored in a **vector database** (ChromaDB)
-    4. When you search, your query is embedded and compared to all chunks
-    5. The most **semantically similar** chunks are returned
-
-    ### Get started
-    - Go to **Search** to ask questions
-    - Go to **Explore Chunks** to see how documents are split
-
-    ---
-    *Built with Streamlit, LangChain, and ChromaDB*
-    """)
-
-    st.info(f"Knowledge base contains **{len(DOCUMENTS)} documents**.")
-
-
+    with col2:
+        st.success(f"📈 **Database Stats**\n\n- {len(DOCUMENTS)} Documents\n- Vector Engine: ChromaDB\n- Model: Multilingual MiniLM")
 # ──────────────────────────────────────────────────────────────────────
 # SEARCH PAGE
 # ──────────────────────────────────────────────────────────────────────
@@ -346,35 +356,141 @@ elif page == "Search":
 
         st.subheader(f"Top {len(results)} results")
         for i, (doc, score) in enumerate(results, 1):
-            # ChromaDB returns distance; lower = more similar
-            similarity = max(0, 1 - score)  # rough conversion
-            with st.container():
-                st.markdown(f"**Result {i}** — relevance: `{similarity:.2f}`")
-                st.markdown(f"> {doc.page_content}")
-                st.divider()
+            similarity = max(0, 1 - score)
+            with st.expander(f"📍 Match {i} (Relevance: {similarity:.2f})", expanded=True):
+                st.write(doc.page_content)
+                st.caption(f"Source Document Chunk — Size: {len(doc.page_content)} characters")
 
     st.markdown("---")
-    st.caption("Powered by paraphrase-multilingual-MiniLM-L6-v2 embeddings + ChromaDB")
+    st.caption("Powered by all-MiniLM-L6-v2 embeddings + ChromaDB")
 
 
 # ──────────────────────────────────────────────────────────────────────
-# EXPLORE CHUNKS PAGE
+# STATISTICS PAGE
 # ──────────────────────────────────────────────────────────────────────
-elif page == "Explore Chunks":
-    st.title("Explore Chunks")
-    st.markdown("See how your documents are split into chunks by the recursive text splitter.")
-
+elif page == "Statistics":
+    st.title("📊 Knowledge Base Analytics")
+    
+    # We need the chunks to calculate stats
     vector_store, chunks = build_vector_store(tuple(DOCUMENTS))
-
-    st.metric("Total chunks", len(chunks))
-
-    lengths = [len(c) for c in chunks]
+    
+    # Row 1: Key Metrics
     col1, col2, col3 = st.columns(3)
-    col1.metric("Avg chunk size", f"{np.mean(lengths):.0f} chars")
-    col2.metric("Min chunk size", f"{min(lengths)} chars")
-    col3.metric("Max chunk size", f"{max(lengths)} chars")
+    col1.metric("Source Documents", len(DOCUMENTS))
+    col2.metric("Total Chunks", len(chunks))
+    
+    avg_len = sum(len(c) for c in chunks) / len(chunks)
+    col3.metric("Avg Chunk Size", f"{avg_len:.0f} chars")
 
-    st.subheader("All chunks")
-    for i, chunk in enumerate(chunks, 1):
-        with st.expander(f"Chunk {i} ({len(chunk)} chars)"):
-            st.text(chunk)
+    st.divider()
+
+    # Row 2: Visualizing Chunking
+    st.subheader("Chunk Size Distribution")
+    chunk_lengths = [len(c) for c in chunks]
+    st.bar_chart(chunk_lengths)
+    st.caption("Each bar represents one chunk. This shows how consistent your chunking strategy is.")
+
+    # Row 3: Topic Coverage
+    st.subheader("Top Keywords in Database")
+    # A quick way to find common words without heavy libraries
+    all_text = " ".join(DOCUMENTS).lower()
+    words = [w for w in all_text.split() if len(w) > 4] # filter out short words like 'the', 'is'
+    
+    import collections
+    word_counts = collections.Counter(words).most_common(10)
+    
+    # Display as a table
+    import pandas as pd
+    df_words = pd.DataFrame(word_counts, columns=['Keyword', 'Frequency'])
+    st.table(df_words)
+
+# ──────────────────────────────────────────────────────────────────────
+# TRIVIA QUIZ PAGE
+# ──────────────────────────────────────────────────────────────────────
+
+elif page == "Trivia Quiz":
+    st.title("🏆 Football History Quiz")
+    st.markdown("Test your knowledge! All these facts are hidden in our database.")
+
+    # 1. Initialize a quiz version ID to force-reset widgets
+    if 'quiz_id' not in st.session_state:
+        st.session_state.quiz_id = 0
+
+    current_score = 0
+
+    # Question 1 - Notice the unique key using quiz_id
+    st.subheader("Question 1")
+    q1 = st.radio(
+        "Who won the very first FIFA World Cup in 1930?",
+        ["Brazil", "Argentina", "Uruguay", "Germany"],
+        index=None,
+        key=f"q1_{st.session_state.quiz_id}"
+    )
+    
+    if q1 == "Uruguay":
+        st.success("Correct! Uruguay won the inaugural FIFA World Cup in 1930, defeating Argentina 4-2 in the final.")
+        current_score += 1
+    elif q1 is not None:
+        st.error("Not quite! Check the 'Search' page to find the answer.")
+
+    st.divider()
+
+    # Question 2
+    st.subheader("Question 2")
+    q2 = st.radio(
+        "In which year did Slovenia achieve its first World Cup victory?",
+        ["2002", "2010", "2014", "Never"],
+        index=None,
+        key=f"q2_{st.session_state.quiz_id}"
+    )
+
+    if q2 == "2010":
+        st.success("Correct! Matjaž Kek's team beat Algeria 1-0.")
+        current_score += 1
+    elif q2 is not None:
+        st.error("Incorrect. (Hint: It was in South Africa!)")
+
+    st.divider()
+
+    # Question 3
+    st.subheader("Question 3")
+    q3 = st.radio(
+        "Which country hosted the 1990 FIFA World Cup?",
+        ["Italy", "Germany", "Brazil", "Argentina"],
+        index=None,
+        key=f"q3_{st.session_state.quiz_id}"
+    )
+
+    if q3 == "Italy":
+        st.success("Correct! The 1990 FIFA World Cup was hosted by Italy.")
+        current_score += 1
+    elif q3 is not None:
+        st.error("Wrong answer! Check the 'Search' page to find the answer.")
+
+    st.divider()
+
+    # Question 4
+    st.subheader("Question 4")
+    q4 = st.radio(
+        "Who is the best goal scorer in World Cup history?",
+        ["Pelé", "Lionel Messi", "Miroslav Klose", "Cristiano Ronaldo"],
+        index=None,
+        key=f"q4_{st.session_state.quiz_id}"
+    )
+
+    if q4 == "Miroslav Klose":
+        st.success("Correct! Miroslav Klose is the all-time leading goal scorer in World Cup history.")
+        current_score += 1
+    elif q4 is not None:
+        st.error("Wrong answer! Check the 'Search' page to find the answer.")
+
+    # Score Display in Sidebar
+    st.sidebar.metric("Your Quiz Score", f"{current_score} / 4")
+    
+    # Final Score and Reset
+    st.divider()
+    
+    if st.button("Reset Quiz", key="final_reset"):
+        # Change the ID to force all radio buttons to reset
+        st.session_state.quiz_id += 1
+        st.rerun()
