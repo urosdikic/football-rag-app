@@ -150,7 +150,7 @@ def build_vector_store(_documents: tuple    ):
     # --- Chunking ---
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=200,
-        chunk_overlap=150,
+        chunk_overlap=50,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
     chunks = []
