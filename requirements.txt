@@ -1,6 +1,9 @@
-streamlit
-langchain
-langchain-community
-langchain-text-splitters
-chromadb
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.1+cpu
 sentence-transformers
+streamlit
+langchain-huggingface
+langchain-text-splitters
+langchain-community
+chromadb
+pysqlite3-binary
