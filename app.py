@@ -12,7 +12,7 @@ st.set_page_config(
 # Each string is one "document" that will be chunked, embedded, and
 # stored in the vector database for semantic search.
 # ──────────────────────────────────────────────────────────────────────
-DOCUMENTS = (
+DOCUMENTS = [
 
     """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist. This early form of football was also much more rough and violent than the modern way of playing. 
     
@@ -27,8 +27,6 @@ DOCUMENTS = (
     The Fédération Internationale de Football Association (FIFA) was founded in 1904 and a foundation act was signed by representatives from France, Belgium, Denmark, the Netherlands, Spain, Sweden and Switzerland. In 1908 would football for the first time be included as an official sport in the Olympic Games. Until the first FIFA World Cup was played in 1930, the Olympic Games football tournament would rank as the most prestigious on a national level. Women's football was not added until 1996.""",
 
     """The aim of football is to score more goals then your opponent in a 90 minute playing time frame. The match is split up into two halves of 45 minutes. After the first 45 minutes players will take a 15 minute rest period called half time. The second 45 minutes will resume and any time deemed fit to be added on by the referee (injury time) will be accordingly.
-
-    Each team consists of 11 players. These are made up of one goalkeeper and ten outfield players. The pitch dimensions vary from each ground but are roughly 120 yards long and 75 yards wide. On each pitch you will have a 6 yard box next to the goal mouth, an 18 yard box surrounding the 6 yard box and a centre circle. Each half of the pitch must be a mirror image of the other in terms of dimensions.
     
     To score the ball must go into your opponent’s goal. The whole ball needs to be over the line for it to be a legitimate goal. A goal can be scored with any part of the body apart from the hand or arm up to the shoulder. The goal itself consists of a frame measuring 8 feet high and 8 yards wide.
     
@@ -113,7 +111,7 @@ SLOVENIA WORLD CUP HISTORY: At the 2010 FIFA World Cup, Slovenia achieved its fi
 SLOVENIA EURO 2024: Slovenia reached the knockout stages of UEFA Euro 2024 for the first time after drawing all three group matches.
 SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which was Italy's only loss in their entire 2006 World Cup campaign.""",
 
-)
+]
 
 # ──────────────────────────────────────────────────────────────────────
 # Cached heavy resources (loaded once, reused across reruns)
@@ -130,7 +128,7 @@ def load_embedding_model():
 
 
 @st.cache_resource(show_spinner="Building vector database...")
-def build_vector_store(_documents: tuple    ):
+def build_vector_store(_documents: list    ):
     """Chunk documents, embed them, and store in ChromaDB."""
     from langchain_text_splitters import RecursiveCharacterTextSplitter
     from langchain_community.vectorstores import Chroma
@@ -138,7 +136,7 @@ def build_vector_store(_documents: tuple    ):
     # --- Chunking ---
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
-        chunk_overlap=50,
+        chunk_overlap=10,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
     chunks = []
