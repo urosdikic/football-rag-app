@@ -30,8 +30,6 @@ DOCUMENTS = [
 
     Each team consists of 11 players. These are made up of one goalkeeper and ten outfield players. The pitch dimensions vary from each ground but are roughly 120 yards long and 75 yards wide. On each pitch you will have a 6 yard box next to the goal mouth, an 18 yard box surrounding the 6 yard box and a centre circle. Each half of the pitch must be a mirror image of the other in terms of dimensions.
     
-    Essentially the equipment that is needed for a soccer match is pitch and a football. Additionally players can be found wearing studded football boots, shin pads and matching strips. The goalkeepers will additionally wear padded gloves as they are the only players allowed to handle the ball. Each team will have a designated captain.
-    
     To score the ball must go into your opponent’s goal. The whole ball needs to be over the line for it to be a legitimate goal. A goal can be scored with any part of the body apart from the hand or arm up to the shoulder. The goal itself consists of a frame measuring 8 feet high and 8 yards wide.
     
     To win you have to score more goals than that of your opponents. If the scores are level after 90 minutes then the game will end as a draw apart from in cup games where the game can go to extra time and even a penalty shootout to decide the winner. Players must use their feet to kick the ball and are prohibited to use their hands apart from goalkeepers who can use any part of their body within the 18 yard box.""",
@@ -39,11 +37,8 @@ DOCUMENTS = [
     """•	A match consists of two 45 minutes halves with a 15 minute rest period in between.
     •	Each team can have a minimum off 11 players (including 1 goalkeeper who is the only player allowed to handle the ball within the 18 yard box) and a minimum of 7 players are needed to constitute a match.
     •	The field must be made of either artificial or natural grass. The size of pitches is allowed to vary but must be within 100-130 yards long and 50-100 yards wide. The pitch must also be marked with a rectangular shape around the outside showing out of bounds, two six yard boxes, two 18 yard boxes and a centre circle. A spot for a penalty placed 12 yards out of both goals and centre circle must also be visible.
-    •	The ball must have a circumference of 58-61cm and be of a circular shape.
     •	Each team can name up to 7 substitute players. Substitutions can be made at any time of the match with each team being able to make a maximum of 3 substitutions per side. In the event of all three substitutes being made and a player having to leave the field for injury the team will be forced to play without a replacement for that player.
     •	Each game must include one referee and two assistant referee’s (linesmen). It’s the job of the referee to act as time keeper and make any decisions which may need to be made such as fouls, free kicks, throw ins, penalties and added on time at the end of each half. The referee may consult the assistant referees at any time in the match regarding a decision. It’s the assistant referee’s job to spot offside’s in the match (see below), throw ins for either team and also assist the referee in all decision making processes where appropriate.
-    •	If the game needs to head to extra time as a result of both teams being level in a match then 30 minutes will be added in the form of two 15 minute halves after the allotted 90 minutes.
-    •	If teams are still level after extra time then a penalty shootout must take place.
     •	The whole ball must cross the goal line for it to constitute as a goal.
     •	For fouls committed a player could receive either a yellow or red card depending on the severity of the foul; this comes down to the referee’s discretion. The yellow is a warning and a red card is a dismissal of that player. Two yellow cards will equal one red. Once a player is sent off then they cannot be replaced.
     •	If a ball goes out of play off an opponent in either of the side lines then it is given as a throw in. If it goes out of play off an attacking player on the base line then it is a goal kick. If it comes off a defending player it is a corner kick.""",
@@ -99,11 +94,7 @@ According to UEFA coefficients and market value, the current top leagues are:
 
     """Often, discussions about formation revolve around how many defenders, midfielders, and forwards are deployed. However, understanding the offensive shape can reveal a side’s true intentions and capability. For instance, a 4-3-3 formation can manifest as a staggered diamond in the midfield when the team is in possession. This allows for a strong pressing game and quick, dynamic wing play. Similarly, a 4-4-2 might shift to a flat four in midfield, offering a more balanced approach between attacking and defending.
     
-    A team’s defensive shape is equally illuminating; it’s their first line of resistance against the opponent’s advances. Traditionally, a team might drop into a 4-4-2 or a 5-4-1 when under pressure. However, it’s the intricacies of player positioning within these formations that truly dictate the team’s ability to close down spaces and mark opponents. This involves a mix of zonal marking and man-to-man coverage, all while maintaining the integrity of the defensive shape to avoid becoming disjointed.
-    
-    One of the most crucial—and least appreciated—aspects of shape is how a team handles the transition from offense to defense and vice versa. This in-between phase is often when teams are most vulnerable, and the successful management of this dynamic can lead to turnovers or prevent counter-attacks.
-    
-    During an attacking phase, players must anticipate the potential loss of possession and adjust their positioning to make the transition to defense as smooth as possible. Conversely, the defending team must be ready to exploit any lapses as the ball changes hands. A good transition shape ensures that the team remains a cohesive unit, able to adapt swiftly to either mode of play.""",
+    A team’s defensive shape is equally illuminating; it’s their first line of resistance against the opponent’s advances. Traditionally, a team might drop into a 4-4-2 or a 5-4-1 when under pressure. However, it’s the intricacies of player positioning within these formations that truly dictate the team’s ability to close down spaces and mark opponents. This involves a mix of zonal marking and man-to-man coverage, all while maintaining the integrity of the defensive shape to avoid becoming disjointed.""",
 
     """WORLD CUP ALL-TIME TOP SCORERS LIST:
 1. Miroslav Klose from Germany is the all-time leading goal scorer in World Cup history with 16 goals across 24 appearances.
@@ -123,6 +114,10 @@ SLOVENIA EURO 2024: Slovenia reached the knockout stages of UEFA Euro 2024 for t
 SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which was Italy's only loss in their entire 2006 World Cup campaign.""",
 
 ]
+
+# ──────────────────────────────────────────────────────────────────────
+# Cached heavy resources (loaded once, reused across reruns)
+# ──────────────────────────────────────────────────────────────────────
 
 # ──────────────────────────────────────────────────────────────────────
 # Cached heavy resources (loaded once, reused across reruns)
@@ -174,7 +169,7 @@ with st.sidebar:
 
     # 2. Your existing navigation
     st.title("Navigation")
-    page = st.radio("Go to:", ["Home", "Search"])
+    page = st.radio("Go to:", ["Home", "Search", "Statistics", "Trivia Quiz", "Tactics Compare"])
     
     # 3. Add a little "Status" indicator at the bottom of the sidebar
     st.divider()
@@ -249,6 +244,207 @@ elif page == "Search":
 
     st.markdown("---")
     st.caption("Powered by all-MiniLM-L6-v2 embeddings + ChromaDB")
+
+
+# ──────────────────────────────────────────────────────────────────────
+# STATISTICS PAGE
+# ──────────────────────────────────────────────────────────────────────
+elif page == "Statistics":
+    st.title("📊 Knowledge Base Analytics")
+    st.markdown("Detailed breakdown of the football data currently loaded into the RAG engine.")
+    
+    # We need the chunks to calculate stats
+    vector_store, chunks = build_vector_store(tuple(DOCUMENTS))
+    
+    # --- ROW 1: Key Metrics in Styled Cards ---
+    st.markdown("### Database Overview")
+    with st.container(border=True):
+        col1, col2, col3 = st.columns(3)
+        
+        # Total source documents
+        col1.metric("Source Docs", len(DOCUMENTS))
+        
+        # Total chunks created
+        col2.metric("Vector Chunks", len(chunks))
+        
+        # Average characters per chunk
+        avg_len = sum(len(c) for c in chunks) / len(chunks)
+        col3.metric("Avg Chunk Size", f"{avg_len:.0f} chars")
+
+    st.divider()
+
+    # --- ROW 2: The Chart ---
+    st.subheader("Chunk Size Distribution")
+    chunk_lengths = [len(c) for c in chunks]
+    st.bar_chart(chunk_lengths, color="#2e7d32") # Matching the green football theme
+
+    # --- ROW 3: Keywords ---
+    st.subheader("Top Keywords in Database")
+    all_text = " ".join(DOCUMENTS).lower()
+    # Filter out common stop words and punctuation
+    words = [w.strip(".,!-") for w in all_text.split() if len(w) > 4]
+    
+    import collections
+    word_counts = collections.Counter(words).most_common(10)
+    
+    import pandas as pd
+    df_words = pd.DataFrame(word_counts, columns=['Keyword', 'Frequency'])
+    st.table(df_words)
+
+# ──────────────────────────────────────────────────────────────────────
+# TRIVIA QUIZ PAGE
+# ──────────────────────────────────────────────────────────────────────
+
+elif page == "Trivia Quiz":
+    st.title("🏆 Football History Quiz")
+    st.markdown("Test your knowledge! All these facts are hidden in our database.")
+
+    # 1. Initialize a quiz version ID to force-reset widgets
+    if 'quiz_id' not in st.session_state:
+        st.session_state.quiz_id = 0
+
+    current_score = 0
+
+    # Question 1 - Notice the unique key using quiz_id
+    st.subheader("Question 1")
+    q1 = st.radio(
+        "Who won the very first FIFA World Cup in 1930?",
+        ["Brazil", "Argentina", "Uruguay", "Germany"],
+        index=None,
+        key=f"q1_{st.session_state.quiz_id}"
+    )
+    
+    if q1 == "Uruguay":
+        st.success("Correct! Uruguay won the inaugural FIFA World Cup in 1930, defeating Argentina 4-2 in the final.")
+        current_score += 1
+    elif q1 is not None:
+        st.error("Not quite! Check the 'Search' page to find the answer.")
+
+    st.divider()
+
+    # Question 2
+    st.subheader("Question 2")
+    q2 = st.radio(
+        "In which year did Slovenia achieve its first World Cup victory?",
+        ["2002", "2010", "2014", "Never"],
+        index=None,
+        key=f"q2_{st.session_state.quiz_id}"
+    )
+
+    if q2 == "2010":
+        st.success("Correct! Matjaž Kek's team beat Algeria 1-0.")
+        current_score += 1
+    elif q2 is not None:
+        st.error("Incorrect. (Hint: It was in South Africa!)")
+
+    st.divider()
+
+    # Question 3
+    st.subheader("Question 3")
+    q3 = st.radio(
+        "Which country hosted the 1990 FIFA World Cup?",
+        ["Italy", "Germany", "Brazil", "Argentina"],
+        index=None,
+        key=f"q3_{st.session_state.quiz_id}"
+    )
+
+    if q3 == "Italy":
+        st.success("Correct! The 1990 FIFA World Cup was hosted by Italy.")
+        current_score += 1
+    elif q3 is not None:
+        st.error("Wrong answer! Check the 'Search' page to find the answer.")
+
+    st.divider()
+
+    # Question 4
+    st.subheader("Question 4")
+    q4 = st.radio(
+        "Who is the best goal scorer in World Cup history?",
+        ["Pelé", "Lionel Messi", "Miroslav Klose", "Cristiano Ronaldo"],
+        index=None,
+        key=f"q4_{st.session_state.quiz_id}"
+    )
+
+    if q4 == "Miroslav Klose":
+        st.success("Correct! Miroslav Klose is the all-time leading goal scorer in World Cup history.")
+        current_score += 1
+    elif q4 is not None:
+        st.error("Wrong answer! Check the 'Search' page to find the answer.")
+
+    # Score Display in Sidebar
+    st.sidebar.metric("Your Quiz Score", f"{current_score} / 4")
+    
+    # Final Score and Reset
+    st.divider()
+    
+    if st.button("Reset Quiz", key="final_reset"):
+        # Change the ID to force all radio buttons to reset
+        st.session_state.quiz_id += 1
+        st.rerun()
+
+
+elif page == "Tactics Compare":
+    st.title("🛡️ Tactical Comparison Lab")
+    st.markdown("Compare modern and classic formations to see how they utilize the pitch.")
+
+    # Dictionary mapping formations to helpful diagrams
+    FORMATION_IMAGES = {
+        "4-3-3": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Association_football_4-3-3_formation.svg/960px-Association_football_4-3-3_formation.svg.png",
+        "4-4-2": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Association_football_4-4-2_formation.svg/960px-Association_football_4-4-2_formation.svg.png",
+        "3-5-2": "https://upload.wikimedia.org/wikipedia/commons/a/af/3-5-2DV.jpg",
+        "5-3-2": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Association_football_5-3-2_formation.svg/960px-Association_football_5-3-2_formation.svg.png",
+        "4-2-3-1": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Association_football_4-2-3-1_formation.svg/960px-Association_football_4-2-3-1_formation.svg.png",
+        "4-5-1": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Association_football_4-5-1_formation.svg/960px-Association_football_4-5-1_formation.svg.png",
+        "3-4-3": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Soccer_formation_3-4-3.svg/960px-Soccer_formation_3-4-3.svg.png",
+        "4-4-2 Diamond": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Association_football_4-4-2_diamond_formation.svg/960px-Association_football_4-4-2_diamond_formation.svg.png"
+
+    }
+
+    FORMATION_TEXT = {
+        "4-3-3": "The 4–3–3 was a development of the 4–2–4, and was played by the Brazil national team in the 1962 World Cup, although a 4–3–3 had also previously been used by the Uruguay national team in the 1950 and 1954 World Cups. The extra player in midfield allows a stronger defence, and the midfield could be staggered for different effects. The three midfielders normally play closely together to protect the defence, and move laterally across the field as a coordinated unit. The formation is usually played without wide midfielders. The three forwards split across the field to spread the attack, and may be expected to mark the opposition full-backs as opposed to doubling back to assist their own full-backs, as do the wide midfielders in a 4–4–2. ",
+        "4-4-2": "This formation was the most common in football in the 1990s and early 2000s, in which midfielders are required to work hard to support both the defence and the attack: typically one of the central midfielders is expected to go upfield as often as possible to support the forward pair, while the other will play a holding role, shielding the defence; the two wide midfield players must move up the flanks to the goal line in attacks and yet also protect the full-backs.",
+        "4-4-2 Diamond": "The 4–4–2 diamond (also described as 4–1–2–1–2) staggers the midfield. The width in the team has to come from the full-backs pushing forward. The defensive midfielder is sometimes used as a deep-lying playmaker, but needs to remain disciplined and protect the back four behind him. The central attacking midfielder is the creative player, responsible for picking up the ball, and distributing the ball wide to its full-backs or providing the two strikers with through balls. When out of possession, the midfield four must drop and assist the defence, while the two strikers must be free for the counter-attack.",
+        "3-5-2": "This formation is similar to 5–3–2, but with some important tweaks: there is usually no sweeper (or libero) but rather three classic centre-backs, and the two wing-backs are oriented more towards the attack. Because of this, the most central midfielder tends to remain further back in order to help prevent counter-attacks. It also differs from the classical 3–5–2 of the WW by having a non-staggered midfield.",
+        "3-4-3": "Using a 3–4–3, the midfielders are expected to split their time between attacking and defending. Having only three dedicated defenders means that if the opposing team breaks through the midfield, they will have a greater chance to score than with a more conventional defensive configuration, such as 4–5–1 or 4–4–2. However, the three forwards allow for a greater concentration on attack. This formation is used by more offensive-minded teams.",
+        "4-2-3-1": "A flexible formation in prospects to defensive or offensive orientation, as both the wide players and the full-backs may join the attack. In defence, this formation is similar to either the 4–5–1 or 4–4–1–1. It is used to maintain possession of the ball and stop opponent attacks by controlling the midfield area of the field. The lone striker may be very tall and strong to hold the ball up as his midfielders and full-backs join him in attack. The striker could also be very fast. In these cases, the opponent's defence will be forced to fall back early, thereby leaving space for the offensive central midfielder. This formation is used especially when a playmaker is to be highlighted. The variations of personnel used on the flanks in this set-up include using traditional wingers, using inverted wingers or simply using wide midfielders.",
+        "4-5-1": "4–5–1 is a conservative formation; however, if the two midfield wingers play a more attacking role, it can be likened to 4–3–3. The formation can be used to grind out 0–0 draws or preserve a lead, as the packing of the centre midfield makes it difficult for the opposition to build up play. Because of the closeness of the midfield, the opposing team's forwards will often be starved of possession. Due to the lone striker, however, the centre of the midfield does have the responsibility of pushing forward as well. The defensive midfielder will often control the pace of the game.",
+        "5-3-2": "This formation has three central defenders, possibly with one acting as a sweeper. This system merges the winger and full-back positions into the wing-back, whose job it is to work their flank along the full length of the pitch, supporting both the defence and the attack."
+        # If you leave a formation out of this list, the app will use the AI search instead!
+    }
+
+    col1, col2 = st.columns(2)
+    with col1:
+        choice1 = st.selectbox("Select Formation A", list(FORMATION_IMAGES.keys()), key="f1")
+        st.image(FORMATION_IMAGES[choice1], caption=f"Standard {choice1} Layout", width=200)
+    with col2:
+        choice2 = st.selectbox("Select Formation B", list(FORMATION_IMAGES.keys()), key="f2")
+        st.image(FORMATION_IMAGES[choice2], caption=f"Standard {choice2} Layout", width=200)
+
+    st.divider()
+
+    if st.button("🔍 Compare Tactical Data", use_container_width=True):
+        vector_store, _ = build_vector_store(tuple(DOCUMENTS))
+        
+        # LOGIC: Check manual text first, then fallback to AI search
+        def get_analysis(choice):
+            if choice in FORMATION_TEXT:
+                return FORMATION_TEXT[choice] # Use your manual text
+            else:
+                res = vector_store.similarity_search(f"Explain the {choice} formation", k=1)
+                return res[0].page_content # Use AI search
+
+        text1 = get_analysis(choice1)
+        text2 = get_analysis(choice2)
+
+        analysis_col1, analysis_col2 = st.columns(2)
+        with analysis_col1:
+            st.markdown(f"### Analysis: {choice1}")
+            st.info(text1)
+        with analysis_col2:
+            st.markdown(f"### Analysis: {choice2}")
+            st.success(text2)
+
+
 
 st.markdown("---")
 footer_col1, footer_col2 = st.columns(2)
