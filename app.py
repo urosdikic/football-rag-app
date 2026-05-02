@@ -16,7 +16,7 @@ DOCUMENTS = [
 
     """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist. This early form of football was also much more rough and violent than the modern way of playing. 
     
-    Another important event in the history of football came about in 1863 in London when the first Football association was formed in England. It was decided that carrying the ball with the hands wasn't allowed. The meeting also resulted in a standardization of the size and weight of the ball. A consequence of the London meeting was that the game was divided into two codes: association football and rugby. The game would, however, continue to develop for a long time and therewas still much flexibility concerning the rules. For one thing, the number of players on the pitch could vary. N """,
+    Another important event in the history of football came about in 1863 in London when the first Football association was formed in England. It was decided that carrying the ball with the hands wasn't allowed. The meeting also resulted in a standardization of the size and weight of the ball. A consequence of the London meeting was that the game was divided into two codes: association football and rugby. The game would, however, continue to develop for a long time and therewas still much flexibility concerning the rules. For one thing, the number of players on the pitch could vary.""",
 
     """Football clubs have existed since the 15th century, b Early clubs were often formed by former school students and the first of this kind was formed in Sheffield in 1855. The oldest among professional football clubs is the English club Notts County that was formed in 1862 and still exists today. 
     
@@ -32,7 +32,6 @@ DOCUMENTS = [
 
     """•	A match consists of two 45 minutes halves with a 15 minute rest period in between.
     •	Each team can have a minimum off 11 players (including 1 goalkeeper who is the only player allowed to handle the ball within the 18 yard box) and a minimum of 7 players are needed to constitute a match.
-    •	The field must be made of either artificial or natural grass. The size of pitches is allowed to vary but must be within 100-130 yards long and 50-100 yards wide. The pitch must also be marked with a rectangular shape around the outside showing out of bounds, two six yard boxes, two 18 yard boxes and a centre circle. A spot for a penalty placed 12 yards out of both goals and centre circle must also be visible.
     •	Each team can name up to 7 substitute players. Substitutions can be made at any time of the match with each team being able to make a maximum of 3 substitutions per side. In the event of all three substitutes being made and a player having to leave the field for injury the team will be forced to play without a replacement for that player.
     •	Each game must include one referee and two assistant referee’s (linesmen). It’s the job of the referee to act as time keeper and make any decisions which may need to be made such as fouls, free kicks, throw ins, penalties and added on time at the end of each half. The referee may consult the assistant referees at any time in the match regarding a decision. It’s the assistant referee’s job to spot offside’s in the match (see below), throw ins for either team and also assist the referee in all decision making processes where appropriate.
     •	The whole ball must cross the goal line for it to constitute as a goal.
@@ -46,7 +45,6 @@ DOCUMENTS = [
 
 The elite club competitions are:
 - UEFA Champions League: The pinnacle of club football, featuring the top teams from Europe's strongest leagues. 
-The 2025/26 final will take place on May 30, 2026, in Budapest.
 - FIFA Club World Cup: In 2025, this tournament expanded to a new 32-team format, putting it on par with major international tournaments.
 - Copa Libertadores: The South American equivalent of the Champions League, known for its incredible passion and gritty style of play.
 
@@ -57,7 +55,7 @@ According to UEFA coefficients and market value, the current top leagues are:
 4.	Bundesliga	Germany	Famous for the highest stadium attendance and attacking play.
 5.	Ligue 1	France	A massive source of talent for all other elite leagues.""",
 
-    """This document lists the results of the FIFA World Cup finals from 1930 to 2022, including the winners, runners-up, final scores, host venues.
+    """This document lists the results of the FIFA World Cup finals from 1930 to 2010, including the winners, runners-up, final scores, host venues.
 
 - 1930: Uruguay defeated Argentina 4–2 at Estadio Centenario, Uruguay.
 - 1934: Italy defeated Czechoslovakia 2–1 (after extra time) at Stadio Nazionale PNF, Italy.
@@ -77,10 +75,7 @@ According to UEFA coefficients and market value, the current top leagues are:
 - 1998: France defeated Brazil 3–0 at Stade de France, France.
 - 2002: Brazil defeated Germany 2–0 at International Stadium, Japan.
 - 2006: Italy defeated France 1–1 (5–3 on penalties) at Olympiastadion, Germany.
-- 2010: Spain defeated Netherlands 1–0 (after extra time) at Soccer City, South Africa.
-- 2014: Germany defeated Argentina 1–0 (after extra time) at Maracanã Stadium, Brazil.
-- 2018: France defeated Croatia 4–2 at Luzhniki Stadium, Russia.
-- 2022: Argentina defeated France 3–3 (4–2 on penalties) at Lusail Stadium, Qatar.""",
+- 2010: Spain defeated Netherlands 1–0 (after extra time) at Soccer City, South Africa.""",
 
     """Offside can be called when an attacking player is in front of the last defender when the pass is played through to them. The offside area is designed to discourage players from simply hanging around the opponent’s goal waiting for a pass. To be onside they must be placed behind the last defender when the ball is played to them. If the player is in front of that last defender then he is deemed to be offside and free kick to the defending team will be called. A player cannot be caught offside in their own half. The goalkeeper does not count as a defender. If the ball is played backwards and the player is in front of the last defender then he is deemed to be not offside.""",
 
