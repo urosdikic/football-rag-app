@@ -167,7 +167,7 @@ with st.sidebar:
 
     # 2. Your existing navigation
     st.title("Navigation")
-    page = st.radio("Go to:", ["Home", "Search", "Statistics", "Trivia Quiz", "Tactics Compare"])
+    page = st.radio("Go to:", ["Home", "Search", "Statistics", "Trivia Quiz"])
     
     # 3. Add a little "Status" indicator at the bottom of the sidebar
     st.divider()
@@ -379,67 +379,6 @@ elif page == "Trivia Quiz":
         # Change the ID to force all radio buttons to reset
         st.session_state.quiz_id += 1
         st.rerun()
-
-
-elif page == "Tactics Compare":
-    st.title("🛡️ Tactical Comparison Lab")
-    st.markdown("Compare modern and classic formations to see how they utilize the pitch.")
-
-    # Dictionary mapping formations to helpful diagrams
-    FORMATION_IMAGES = {
-        "4-3-3": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Association_football_4-3-3_formation.svg/960px-Association_football_4-3-3_formation.svg.png",
-        "4-4-2": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Association_football_4-4-2_formation.svg/960px-Association_football_4-4-2_formation.svg.png",
-        "3-5-2": "https://upload.wikimedia.org/wikipedia/commons/a/af/3-5-2DV.jpg",
-        "5-3-2": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Association_football_5-3-2_formation.svg/960px-Association_football_5-3-2_formation.svg.png",
-        "4-2-3-1": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Association_football_4-2-3-1_formation.svg/960px-Association_football_4-2-3-1_formation.svg.png",
-        "4-5-1": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Association_football_4-5-1_formation.svg/960px-Association_football_4-5-1_formation.svg.png",
-        "3-4-3": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Soccer_formation_3-4-3.svg/960px-Soccer_formation_3-4-3.svg.png",
-        "4-4-2 Diamond": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Association_football_4-4-2_diamond_formation.svg/960px-Association_football_4-4-2_diamond_formation.svg.png"
-
-    }
-
-    FORMATION_TEXT = {
-        "4-3-3": "The 4–3–3 was a development of the 4–2–4, and was played by the Brazil national team in the 1962 World Cup. The extra player in midfield allows a stronger defence, and the midfield could be staggered for different effects. The three midfielders normally play closely together to protect the defence, and move laterally across the field as a coordinated unit. The formation is usually played without wide midfielders. The three forwards split across the field to spread the attack, and may be expected to mark the opposition full-backs as opposed to doubling back to assist their own full-backs, as do the wide midfielders in a 4–4–2. ",
-        "4-4-2": "This formation was the most common in football in the 1990s and early 2000s, in which midfielders are required to work hard to support both the defence and the attack: typically one of the central midfielders is expected to go upfield as often as possible to support the forward pair, while the other will play a holding role, shielding the defence; the two wide midfield players must move up the flanks to the goal line in attacks and yet also protect the full-backs.",
-        "4-4-2 Diamond": "The 4–4–2 diamond staggers the midfield. The width in the team has to come from the full-backs pushing forward. The defensive midfielder is sometimes used as a deep-lying playmaker, but needs to remain disciplined and protect the back four behind him. The central attacking midfielder is the creative player, responsible for picking up the ball, and distributing the ball wide to its full-backs or providing the two strikers with through balls. When out of possession, the midfield four must drop and assist the defence, while the two strikers must be free for the counter-attack.",
-        "3-5-2": "This formation is similar to 5–3–2, but with some important tweaks: there is usually no sweeper (or libero) but rather three classic centre-backs, and the two wing-backs are oriented more towards the attack. Because of this, the most central midfielder tends to remain further back in order to help prevent counter-attacks. It also differs from the classical 3–5–2 of the WW by having a non-staggered midfield.",
-        "3-4-3": "Using a 3–4–3, the midfielders are expected to split their time between attacking and defending. Having only three dedicated defenders means that if the opposing team breaks through the midfield, they will have a greater chance to score than with a more conventional defensive configuration, such as 4–5–1 or 4–4–2. However, the three forwards allow for a greater concentration on attack. This formation is used by more offensive-minded teams.",
-        "4-2-3-1": "A flexible formation in prospects to defensive or offensive orientation, as both the wide players and the full-backs may join the attack. In defence, this formation is similar to either the 4–5–1 or 4–4–1–1. It is used to maintain possession of the ball and stop opponent attacks by controlling the midfield area of the field. The lone striker may be very tall and strong to hold the ball up as his midfielders and full-backs join him in attack. The striker could also be very fast. In these cases, the opponent's defence will be forced to fall back early, thereby leaving space for the offensive central midfielder. This formation is used especially when a playmaker is to be highlighted. The variations of personnel used on the flanks in this set-up include using traditional wingers, using inverted wingers or simply using wide midfielders.",
-        "4-5-1": "4–5–1 is a conservative formation; however, if the two midfield wingers play a more attacking role, it can be likened to 4–3–3. The formation can be used to grind out 0–0 draws or preserve a lead, as the packing of the centre midfield makes it difficult for the opposition to build up play. Because of the closeness of the midfield, the opposing team's forwards will often be starved of possession. Due to the lone striker, however, the centre of the midfield does have the responsibility of pushing forward as well. The defensive midfielder will often control the pace of the game.",
-        "5-3-2": "This formation has three central defenders, possibly with one acting as a sweeper. This system merges the winger and full-back positions into the wing-back, whose job it is to work their flank along the full length of the pitch, supporting both the defence and the attack."
-    }
-
-    col1, col2 = st.columns(2)
-    with col1:
-        choice1 = st.selectbox("Select Formation A", list(FORMATION_IMAGES.keys()), key="f1")
-        st.image(FORMATION_IMAGES[choice1], caption=f"Standard {choice1} Layout", width=200)
-    with col2:
-        choice2 = st.selectbox("Select Formation B", list(FORMATION_IMAGES.keys()), key="f2")
-        st.image(FORMATION_IMAGES[choice2], caption=f"Standard {choice2} Layout", width=200)
-
-    st.divider()
-
-    if st.button("🔍 Compare Tactical Data", use_container_width=True):
-        vector_store, _ = build_vector_store(tuple(DOCUMENTS))
-        
-        # LOGIC: Check manual text first, then fallback to AI search
-        def get_analysis(choice):
-            if choice in FORMATION_TEXT:
-                return FORMATION_TEXT[choice] # Use your manual text
-            else:
-                res = vector_store.similarity_search(f"Explain the {choice} formation", k=1)
-                return res[0].page_content # Use AI search
-
-        text1 = get_analysis(choice1)
-        text2 = get_analysis(choice2)
-
-        analysis_col1, analysis_col2 = st.columns(2)
-        with analysis_col1:
-            st.markdown(f"### Analysis: {choice1}")
-            st.info(text1)
-        with analysis_col2:
-            st.markdown(f"### Analysis: {choice2}")
-            st.success(text2)
 
 
 st.markdown("---")
