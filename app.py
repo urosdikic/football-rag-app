@@ -28,8 +28,6 @@ DOCUMENTS = [
 
     """The aim of football is to score more goals then your opponent in a 90 minute playing time frame. The match is split up into two halves of 45 minutes. After the first 45 minutes players will take a 15 minute rest period called half time. The second 45 minutes will resume and any time deemed fit to be added on by the referee (injury time) will be accordingly.
     
-    To score the ball must go into your opponent’s goal. The whole ball needs to be over the line for it to be a legitimate goal. A goal can be scored with any part of the body apart from the hand or arm up to the shoulder. The goal itself consists of a frame measuring 8 feet high and 8 yards wide.
-    
     To win you have to score more goals than that of your opponents. If the scores are level after 90 minutes then the game will end as a draw apart from in cup games where the game can go to extra time and even a penalty shootout to decide the winner. Players must use their feet to kick the ball and are prohibited to use their hands apart from goalkeepers who can use any part of their body within the 18 yard box.""",
 
     """•	A match consists of two 45 minutes halves with a 15 minute rest period in between.
@@ -59,30 +57,30 @@ According to UEFA coefficients and market value, the current top leagues are:
 4.	Bundesliga	Germany	Famous for the highest stadium attendance and attacking play.
 5.	Ligue 1	France	A massive source of talent for all other elite leagues.""",
 
-    """This document lists the results of the FIFA World Cup finals from 1930 to 2022, including the winners, runners-up, final scores, host venues and attendances.
+    """This document lists the results of the FIFA World Cup finals from 1930 to 2022, including the winners, runners-up, final scores, host venues.
 
-- 1930: Uruguay defeated Argentina 4–2 at Estadio Centenario, Uruguay. (Attendance: 68,346)
-- 1934: Italy defeated Czechoslovakia 2–1 (after extra time) at Stadio Nazionale PNF, Italy. (Attendance: 55,000)
-- 1938: Italy defeated Hungary 4–2 at Stade Olympique de Colombes, France. (Attendance: 45,000)
-- 1950: Uruguay defeated Brazil 2–1 at the Maracanã Stadium, Brazil. (Attendance: 173,850)
-- 1954: West Germany defeated Hungary 3–2 at Wankdorf Stadium, Switzerland. (Attendance: 62,500)
-- 1958: Brazil defeated Sweden 5–2 at Råsunda Stadium, Sweden. (Attendance: 49,737)
-- 1962: Brazil defeated Czechoslovakia 3–1 at Estadio Nacional, Chile. (Attendance: 68,679)
-- 1966: England defeated West Germany 4–2 (after extra time) at Wembley Stadium, England. (Attendance: 96,924)
-- 1970: Brazil defeated Italy 4–1 at Estadio Azteca, Mexico. (Attendance: 107,412)
-- 1974: West Germany defeated Netherlands 2–1 at Olympiastadion, West Germany. (Attendance: 78,200)
-- 1978: Argentina defeated Netherlands 3–1 (after extra time) at Estadio Monumental, Argentina. (Attendance: 71,483)
-- 1982: Italy defeated West Germany 3–1 at Santiago Bernabéu, Spain. (Attendance: 90,000)
-- 1986: Argentina defeated West Germany 3–2 at Estadio Azteca, Mexico. (Attendance: 114,600)
-- 1990: West Germany defeated Argentina 1–0 at Stadio Olimpico, Italy. (Attendance: 73,603)
-- 1994: Brazil defeated Italy 0–0 (3–2 on penalties) at the Rose Bowl, USA. (Attendance: 94,194)
-- 1998: France defeated Brazil 3–0 at Stade de France, France. (Attendance: 80,000)
-- 2002: Brazil defeated Germany 2–0 at International Stadium, Japan. (Attendance: 69,029)
-- 2006: Italy defeated France 1–1 (5–3 on penalties) at Olympiastadion, Germany. (Attendance: 69,000)
-- 2010: Spain defeated Netherlands 1–0 (after extra time) at Soccer City, South Africa. (Attendance: 84,490)
-- 2014: Germany defeated Argentina 1–0 (after extra time) at Maracanã Stadium, Brazil. (Attendance: 74,738)
-- 2018: France defeated Croatia 4–2 at Luzhniki Stadium, Russia. (Attendance: 78,011)
-- 2022: Argentina defeated France 3–3 (4–2 on penalties) at Lusail Stadium, Qatar. (Attendance: 88,966)""",
+- 1930: Uruguay defeated Argentina 4–2 at Estadio Centenario, Uruguay.
+- 1934: Italy defeated Czechoslovakia 2–1 (after extra time) at Stadio Nazionale PNF, Italy.
+- 1938: Italy defeated Hungary 4–2 at Stade Olympique de Colombes, France.
+- 1950: Uruguay defeated Brazil 2–1 at the Maracanã Stadium, Brazil.
+- 1954: West Germany defeated Hungary 3–2 at Wankdorf Stadium, Switzerland.
+- 1958: Brazil defeated Sweden 5–2 at Råsunda Stadium, Sweden.
+- 1962: Brazil defeated Czechoslovakia 3–1 at Estadio Nacional, Chile.
+- 1966: England defeated West Germany 4–2 (after extra time) at Wembley Stadium, England.
+- 1970: Brazil defeated Italy 4–1 at Estadio Azteca, Mexico.
+- 1974: West Germany defeated Netherlands 2–1 at Olympiastadion, West Germany.
+- 1978: Argentina defeated Netherlands 3–1 (after extra time) at Estadio Monumental, Argentina.
+- 1982: Italy defeated West Germany 3–1 at Santiago Bernabéu, Spain.
+- 1986: Argentina defeated West Germany 3–2 at Estadio Azteca, Mexico.
+- 1990: West Germany defeated Argentina 1–0 at Stadio Olimpico, Italy.
+- 1994: Brazil defeated Italy 0–0 (3–2 on penalties) at the Rose Bowl, USA.
+- 1998: France defeated Brazil 3–0 at Stade de France, France.
+- 2002: Brazil defeated Germany 2–0 at International Stadium, Japan.
+- 2006: Italy defeated France 1–1 (5–3 on penalties) at Olympiastadion, Germany.
+- 2010: Spain defeated Netherlands 1–0 (after extra time) at Soccer City, South Africa.
+- 2014: Germany defeated Argentina 1–0 (after extra time) at Maracanã Stadium, Brazil.
+- 2018: France defeated Croatia 4–2 at Luzhniki Stadium, Russia.
+- 2022: Argentina defeated France 3–3 (4–2 on penalties) at Lusail Stadium, Qatar.""",
 
     """Offside can be called when an attacking player is in front of the last defender when the pass is played through to them. The offside area is designed to discourage players from simply hanging around the opponent’s goal waiting for a pass. To be onside they must be placed behind the last defender when the ball is played to them. If the player is in front of that last defender then he is deemed to be offside and free kick to the defending team will be called. A player cannot be caught offside in their own half. The goalkeeper does not count as a defender. If the ball is played backwards and the player is in front of the last defender then he is deemed to be not offside.""",
 
@@ -99,12 +97,7 @@ According to UEFA coefficients and market value, the current top leagues are:
 2. Ronaldo from Brazil is the second highest scorer with 15 goals in 19 appearances.
 3. Gerd Müller from West Germany scored 14 goals in only 13 appearances.
 4. Lionel Messi from Argentina has scored 13 goals in 26 World Cup appearances.
-5. Just Fontaine from France holds the record for most goals in a single tournament, with 13 goals in 6 appearances.
-6. Pelé from Brazil scored a total of 12 goals in 14 World Cup appearances.
-7. Kylian Mbappé from France has scored 12 goals in 14 appearances so far.
-8. Jürgen Klinsmann from Germany scored 11 goals in 17 World Cup matches.
-9. Sándor Kocsis from Hungary scored 11 goals in just 5 appearances.
-10. Grzegorz Lato from Poland scored 10 goals in 20 appearances.""",
+5. Just Fontaine from France holds the record for most goals in a single tournament, with 13 goals in 6 appearances.""",
 
     """SLOVENIA NATIONAL TEAM RECORDS: Slovenia has qualified for the FIFA World Cup twice and the UEFA European Championship twice.
 SLOVENIA WORLD CUP HISTORY: At the 2010 FIFA World Cup, Slovenia achieved its first and only victory by defeating Algeria 1–0.
