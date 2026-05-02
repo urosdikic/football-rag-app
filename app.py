@@ -12,7 +12,7 @@ st.set_page_config(
 # Each string is one "document" that will be chunked, embedded, and
 # stored in the vector database for semantic search.
 # ──────────────────────────────────────────────────────────────────────
-DOCUMENTS = [
+DOCUMENTS = (
 
     """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist. This early form of football was also much more rough and violent than the modern way of playing. 
     
@@ -113,7 +113,7 @@ SLOVENIA WORLD CUP HISTORY: At the 2010 FIFA World Cup, Slovenia achieved its fi
 SLOVENIA EURO 2024: Slovenia reached the knockout stages of UEFA Euro 2024 for the first time after drawing all three group matches.
 SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which was Italy's only loss in their entire 2006 World Cup campaign.""",
 
-]
+)
 
 # ──────────────────────────────────────────────────────────────────────
 # Cached heavy resources (loaded once, reused across reruns)
@@ -401,15 +401,14 @@ elif page == "Tactics Compare":
     }
 
     FORMATION_TEXT = {
-        "4-3-3": "The 4–3–3 was a development of the 4–2–4, and was played by the Brazil national team in the 1962 World Cup, although a 4–3–3 had also previously been used by the Uruguay national team in the 1950 and 1954 World Cups. The extra player in midfield allows a stronger defence, and the midfield could be staggered for different effects. The three midfielders normally play closely together to protect the defence, and move laterally across the field as a coordinated unit. The formation is usually played without wide midfielders. The three forwards split across the field to spread the attack, and may be expected to mark the opposition full-backs as opposed to doubling back to assist their own full-backs, as do the wide midfielders in a 4–4–2. ",
+        "4-3-3": "The 4–3–3 was a development of the 4–2–4, and was played by the Brazil national team in the 1962 World Cup. The extra player in midfield allows a stronger defence, and the midfield could be staggered for different effects. The three midfielders normally play closely together to protect the defence, and move laterally across the field as a coordinated unit. The formation is usually played without wide midfielders. The three forwards split across the field to spread the attack, and may be expected to mark the opposition full-backs as opposed to doubling back to assist their own full-backs, as do the wide midfielders in a 4–4–2. ",
         "4-4-2": "This formation was the most common in football in the 1990s and early 2000s, in which midfielders are required to work hard to support both the defence and the attack: typically one of the central midfielders is expected to go upfield as often as possible to support the forward pair, while the other will play a holding role, shielding the defence; the two wide midfield players must move up the flanks to the goal line in attacks and yet also protect the full-backs.",
-        "4-4-2 Diamond": "The 4–4–2 diamond (also described as 4–1–2–1–2) staggers the midfield. The width in the team has to come from the full-backs pushing forward. The defensive midfielder is sometimes used as a deep-lying playmaker, but needs to remain disciplined and protect the back four behind him. The central attacking midfielder is the creative player, responsible for picking up the ball, and distributing the ball wide to its full-backs or providing the two strikers with through balls. When out of possession, the midfield four must drop and assist the defence, while the two strikers must be free for the counter-attack.",
+        "4-4-2 Diamond": "The 4–4–2 diamond staggers the midfield. The width in the team has to come from the full-backs pushing forward. The defensive midfielder is sometimes used as a deep-lying playmaker, but needs to remain disciplined and protect the back four behind him. The central attacking midfielder is the creative player, responsible for picking up the ball, and distributing the ball wide to its full-backs or providing the two strikers with through balls. When out of possession, the midfield four must drop and assist the defence, while the two strikers must be free for the counter-attack.",
         "3-5-2": "This formation is similar to 5–3–2, but with some important tweaks: there is usually no sweeper (or libero) but rather three classic centre-backs, and the two wing-backs are oriented more towards the attack. Because of this, the most central midfielder tends to remain further back in order to help prevent counter-attacks. It also differs from the classical 3–5–2 of the WW by having a non-staggered midfield.",
         "3-4-3": "Using a 3–4–3, the midfielders are expected to split their time between attacking and defending. Having only three dedicated defenders means that if the opposing team breaks through the midfield, they will have a greater chance to score than with a more conventional defensive configuration, such as 4–5–1 or 4–4–2. However, the three forwards allow for a greater concentration on attack. This formation is used by more offensive-minded teams.",
         "4-2-3-1": "A flexible formation in prospects to defensive or offensive orientation, as both the wide players and the full-backs may join the attack. In defence, this formation is similar to either the 4–5–1 or 4–4–1–1. It is used to maintain possession of the ball and stop opponent attacks by controlling the midfield area of the field. The lone striker may be very tall and strong to hold the ball up as his midfielders and full-backs join him in attack. The striker could also be very fast. In these cases, the opponent's defence will be forced to fall back early, thereby leaving space for the offensive central midfielder. This formation is used especially when a playmaker is to be highlighted. The variations of personnel used on the flanks in this set-up include using traditional wingers, using inverted wingers or simply using wide midfielders.",
         "4-5-1": "4–5–1 is a conservative formation; however, if the two midfield wingers play a more attacking role, it can be likened to 4–3–3. The formation can be used to grind out 0–0 draws or preserve a lead, as the packing of the centre midfield makes it difficult for the opposition to build up play. Because of the closeness of the midfield, the opposing team's forwards will often be starved of possession. Due to the lone striker, however, the centre of the midfield does have the responsibility of pushing forward as well. The defensive midfielder will often control the pace of the game.",
         "5-3-2": "This formation has three central defenders, possibly with one acting as a sweeper. This system merges the winger and full-back positions into the wing-back, whose job it is to work their flank along the full length of the pitch, supporting both the defence and the attack."
-        # If you leave a formation out of this list, the app will use the AI search instead!
     }
 
     col1, col2 = st.columns(2)
@@ -443,7 +442,6 @@ elif page == "Tactics Compare":
         with analysis_col2:
             st.markdown(f"### Analysis: {choice2}")
             st.success(text2)
-
 
 
 st.markdown("---")
