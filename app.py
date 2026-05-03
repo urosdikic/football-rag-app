@@ -44,14 +44,7 @@ DOCUMENTS = [
 The elite club competitions are:
 - UEFA Champions League: The pinnacle of club football, featuring the top teams from Europe's strongest leagues. 
 - FIFA Club World Cup: In 2025, this tournament expanded to a new 32-team format, putting it on par with major international tournaments.
-- Copa Libertadores: The South American equivalent of the Champions League, known for its incredible passion and gritty style of play.
-
-According to UEFA coefficients and market value, the current top leagues are:
-1.	Premier League	England	The most financially powerful and most-watched league globally.
-2.	Serie A	Italy	A tactically advanced league that has seen a major resurgence recently.
-3.	La Liga	Spain	Home to technical football and some of the world's biggest stars.
-4.	Bundesliga	Germany	Famous for the highest stadium attendance and attacking play.
-5.	Ligue 1	France	A massive source of talent for all other elite leagues.""",
+- Copa Libertadores: The South American equivalent of the Champions League, known for its incredible passion and gritty style of play.""",
 
     """This document lists the results of the FIFA World Cup finals from 1930 to 2010, including the winners, runners-up, final scores, host venues.
 
