@@ -46,16 +46,8 @@ The elite club competitions are:
 - FIFA Club World Cup: In 2025, this tournament expanded to a new 32-team format, putting it on par with major international tournaments.
 - Copa Libertadores: The South American equivalent of the Champions League, known for its incredible passion and gritty style of play.""",
 
-    """This document lists the results of the FIFA World Cup finals from 1930 to 2010, including the winners, runners-up, final scores, host venues.
+    """This document lists the results of the FIFA World Cup finals from 1970 to 2010, including the winners, runners-up, final scores, host venues.
 
-- 1930: Uruguay defeated Argentina 4–2 at Estadio Centenario, Uruguay.
-- 1934: Italy defeated Czechoslovakia 2–1 (after extra time) at Stadio Nazionale PNF, Italy.
-- 1938: Italy defeated Hungary 4–2 at Stade Olympique de Colombes, France.
-- 1950: Uruguay defeated Brazil 2–1 at the Maracanã Stadium, Brazil.
-- 1954: West Germany defeated Hungary 3–2 at Wankdorf Stadium, Switzerland.
-- 1958: Brazil defeated Sweden 5–2 at Råsunda Stadium, Sweden.
-- 1962: Brazil defeated Czechoslovakia 3–1 at Estadio Nacional, Chile.
-- 1966: England defeated West Germany 4–2 (after extra time) at Wembley Stadium, England.
 - 1970: Brazil defeated Italy 4–1 at Estadio Azteca, Mexico.
 - 1974: West Germany defeated Netherlands 2–1 at Olympiastadion, West Germany.
 - 1978: Argentina defeated Netherlands 3–1 (after extra time) at Estadio Monumental, Argentina.
