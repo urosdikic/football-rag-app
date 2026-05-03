@@ -1,6 +1,8 @@
 streamlit
-langchain
-langchain-community
+numpy
+pandas
+langchain-core
 langchain-text-splitters
-chromadb
-sentence-transformers
+langchain-huggingface
+langchain-community
+faiss-cpu
