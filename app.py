@@ -33,7 +33,6 @@ DOCUMENTS = [
     """•	A match consists of two 45 minutes halves with a 15 minute rest period in between.
     •	Each team can have a minimum off 11 players (including 1 goalkeeper who is the only player allowed to handle the ball within the 18 yard box) and a minimum of 7 players are needed to constitute a match.
     •	Each team can name up to 7 substitute players. Substitutions can be made at any time of the match with each team being able to make a maximum of 3 substitutions per side. In the event of all three substitutes being made and a player having to leave the field for injury the team will be forced to play without a replacement for that player.
-    •	Each game must include one referee and two assistant referee’s (linesmen). It’s the job of the referee to act as time keeper and make any decisions which may need to be made such as fouls, free kicks, throw ins, penalties and added on time at the end of each half. The referee may consult the assistant referees at any time in the match regarding a decision.
     •	For fouls committed a player could receive either a yellow or red card depending on the severity of the foul. The yellow is a warning and a red card is a dismissal of that player. Two yellow cards will equal one red. Once a player is sent off then they cannot be replaced.
     •	If a ball goes out of play off an opponent in either of the side lines then it is given as a throw in. If it goes out of play off an attacking player on the base line then it is a goal kick. If it comes off a defending player it is a corner kick.""",
 
@@ -76,7 +75,7 @@ According to UEFA coefficients and market value, the current top leagues are:
 - 2006: Italy defeated France 1–1 (5–3 on penalties) at Olympiastadion, Germany.
 - 2010: Spain defeated Netherlands 1–0 (after extra time) at Soccer City, South Africa.""",
 
-    """Offside can be called when an attacking player is in front of the last defender when the pass is played through to them. The offside area is designed to discourage players from simply hanging around the opponent’s goal waiting for a pass. To be onside they must be placed behind the last defender when the ball is played to them. If the player is in front of that last defender then he is deemed to be offside and free kick to the defending team will be called. A player cannot be caught offside in their own half. The goalkeeper does not count as a defender. If the ball is played backwards and the player is in front of the last defender then he is deemed to be not offside.""",
+    """Offside can be called when an attacking player is in front of the last defender when the pass is played through to them. The offside area is designed to discourage players from simply hanging around the opponent’s goal waiting for a pass. To be onside they must be placed behind the last defender when the ball is played to them. If the player is in front of that last defender then he is deemed to be offside and free kick to the defending team will be called. A player cannot be caught offside in their own half.""",
 
     """Formation, as most fans know, is the arrangement of players on the field. This is typically expressed as a series of numbers (e.g., 4-4-2, 3-5-2) that indicate the number of players in each horizontal line of the tactical setup. It’s the starting point from which coaches build their game plan.
     
