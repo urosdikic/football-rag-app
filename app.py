@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import os
 
 st.set_page_config(
     page_title="My RAG-Football-Knowledge Base",
@@ -12,7 +13,7 @@ st.set_page_config(
 # Each string is one "document" that will be chunked, embedded, and
 # stored in the vector database for semantic search.
 # ──────────────────────────────────────────────────────────────────────
-DOCUMENTS = [
+DOCUMENTS = (
 
     """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist. This early form of football was also much more rough and violent than the modern way of playing. 
     
@@ -138,10 +139,10 @@ SLOVENIA WORLD CUP HISTORY: At the 2010 FIFA World Cup, Slovenia achieved its fi
 SLOVENIA EURO 2024: Slovenia reached the knockout stages of UEFA Euro 2024 for the first time after drawing all three group matches.
 SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which was Italy's only loss in their entire 2006 World Cup campaign.""",
 
-]
+)
 
 # ──────────────────────────────────────────────────────────────────────
-# Cached heavy resources (loaded once, reused across reruns)
+# Cached heavy resources (FAISS Optimized)
 # ──────────────────────────────────────────────────────────────────────
 
 @st.cache_resource(show_spinner="Loading embedding model...")
@@ -150,13 +151,17 @@ def load_embedding_model():
     return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 
-@st.cache_resource(show_spinner="Building vector database...")
-def build_vector_store(_documents: tuple    ):
-    """Chunk documents, embed them, and store in ChromaDB."""
+@st.cache_resource(show_spinner="Accessing vector database...")
+def build_vector_store(_documents: tuple):
+    """Chunk documents, embed them, and store/load in FAISS."""
     from langchain_text_splitters import RecursiveCharacterTextSplitter
-    from langchain_community.vectorstores import Chroma
+    from langchain_community.vectorstores import FAISS
+
+    embeddings = load_embedding_model()
+    index_path = "faiss_index"
 
     # --- Chunking ---
+    # We always need the chunks for statistics, so we split them here
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
         chunk_overlap=50,
@@ -166,14 +171,19 @@ def build_vector_store(_documents: tuple    ):
     for doc in _documents:
         chunks.extend(splitter.split_text(doc))
 
-    embeddings = load_embedding_model()
+    # --- Load or Build the FAISS Index ---
+    # If the index exists locally, load it instantly without generating new embeddings
+    if os.path.exists(index_path):
+        vector_store = FAISS.load_local(
+            index_path, 
+            embeddings, 
+            allow_dangerous_deserialization=True
+        )
+    else:
+        # If it's the first run, build it and save it to disk
+        vector_store = FAISS.from_texts(chunks, embeddings)
+        vector_store.save_local(index_path)
 
-    # --- Store in ChromaDB ---
-    vector_store = Chroma.from_texts(
-        texts=chunks,
-        embedding=embeddings,
-        collection_name="knowledge_base",
-    )
     return vector_store, chunks
 
 
@@ -196,7 +206,7 @@ with st.sidebar:
     st.divider()
     st.markdown("### 🟢 System Status")
     st.caption("Model: MiniLM-L6-v2")
-    st.caption("Database: ChromaDB (Active)")
+    st.caption("Database: FAISS (Optimized)")
 
 # ──────────────────────────────────────────────────────────────────────
 # HOME PAGE
