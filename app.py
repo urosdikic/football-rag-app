@@ -169,7 +169,7 @@ def build_vector_store(_documents: tuple):
     # --- Chunking ---
     # We always need the chunks for statistics, so we split them here
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
+        chunk_size=200,
         chunk_overlap=50,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
