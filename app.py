@@ -142,7 +142,7 @@ with st.sidebar:
 
     # 2. Your existing navigation
     st.title("Navigation")
-    page = st.radio("Go to:", ["Home", "Search", "Statistics", "Trivia Quiz"])
+    page = st.radio("Go to:", ["Home", "Search", "Trivia Quiz"])
     
     # 3. Add a little "Status" indicator at the bottom of the sidebar
     st.divider()
@@ -217,52 +217,6 @@ elif page == "Search":
 
     st.markdown("---")
     st.caption("Powered by all-MiniLM-L6-v2 embeddings + ChromaDB")
-
-
-# ──────────────────────────────────────────────────────────────────────
-# STATISTICS PAGE
-# ──────────────────────────────────────────────────────────────────────
-elif page == "Statistics":
-    st.title("📊 Knowledge Base Analytics")
-    st.markdown("Detailed breakdown of the football data currently loaded into the RAG engine.")
-    
-    # We need the chunks to calculate stats
-    vector_store, chunks = build_vector_store(tuple(DOCUMENTS))
-    
-    # --- ROW 1: Key Metrics in Styled Cards ---
-    st.markdown("### Database Overview")
-    with st.container(border=True):
-        col1, col2, col3 = st.columns(3)
-        
-        # Total source documents
-        col1.metric("Source Docs", len(DOCUMENTS))
-        
-        # Total chunks created
-        col2.metric("Vector Chunks", len(chunks))
-        
-        # Average characters per chunk
-        avg_len = sum(len(c) for c in chunks) / len(chunks)
-        col3.metric("Avg Chunk Size", f"{avg_len:.0f} chars")
-
-    st.divider()
-
-    # --- ROW 2: The Chart ---
-    st.subheader("Chunk Size Distribution")
-    chunk_lengths = [len(c) for c in chunks]
-    st.bar_chart(chunk_lengths, color="#2e7d32") # Matching the green football theme
-
-    # --- ROW 3: Keywords ---
-    st.subheader("Top Keywords in Database")
-    all_text = " ".join(DOCUMENTS).lower()
-    # Filter out common stop words and punctuation
-    words = [w.strip(".,!-") for w in all_text.split() if len(w) > 4]
-    
-    import collections
-    word_counts = collections.Counter(words).most_common(10)
-    
-    import pandas as pd
-    df_words = pd.DataFrame(word_counts, columns=['Keyword', 'Frequency'])
-    st.table(df_words)
 
 # ──────────────────────────────────────────────────────────────────────
 # TRIVIA QUIZ PAGE
