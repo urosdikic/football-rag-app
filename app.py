@@ -14,15 +14,13 @@ st.set_page_config(
 # ──────────────────────────────────────────────────────────────────────
 DOCUMENTS = [
 
-    """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist.
-
-    The oldest among professional football clubs is the English club Notts County that was formed in 1862 and still exists today. 
+    """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist. The oldest among professional football clubs is the English club Notts County that was formed in 1862 and still exists today. 
     
     The Fédération Internationale de Football Association (FIFA) was founded in 1904 and a foundation act was signed by representatives from France, Belgium, Denmark, the Netherlands, Spain, Sweden and Switzerland. In 1908 would football for the first time be included as an official sport in the Olympic Games. Until the first FIFA World Cup was played in 1930, the Olympic Games football tournament would rank as the most prestigious on a national level.""",
 
     """The aim of football is to score more goals then your opponent in a 90 minute playing time frame. The match is split up into two halves of 45 minutes. After the first 45 minutes players will take a 15 minute rest period called half time. The second 45 minutes will resume and any time deemed fit to be added on by the referee (injury time) will be accordingly.
     
-    To win you have to score more goals than that of your opponents. If the scores are level after 90 minutes then the game will end as a draw apart from in cup games where the game can go to extra time and even a penalty shootout to decide the winner. Players must use their feet to kick the ball and are prohibited to use their hands apart from goalkeepers who can use any part of their body within the 18 yard box.""",
+    To win you have to score more goals than that of your opponents. If the scores are level after 90 minutes then the game will end as a draw. Players must use their feet to kick the ball and are prohibited to use their hands apart from goalkeepers who can use any part of their body within the 18 yard box.""",
 
     """•	Each team can have a minimum off 11 players (including 1 goalkeeper who is the only player allowed to handle the ball within the 18 yard box) and a minimum of 7 players are needed to constitute a match.
     •	Each team can name up to 7 substitute players. Substitutions can be made at any time of the match with each team being able to make a maximum of 3 substitutions per side. In the event of all three substitutes being made and a player having to leave the field for injury the team will be forced to play without a replacement for that player.
@@ -58,7 +56,7 @@ The elite club competitions are:
     
     On the other hand, shape refers to how the team looks during play, which is not always consistent with their formation. It’s about the fluidity of players’ positioning, and is greatly influenced by whether the team has possession, where the ball is located, and their intended strategy at any given moment.""",
 
-    """Often, discussions about formation revolve around how many defenders, midfielders, and forwards are deployed. However, understanding the offensive shape can reveal a side’s true intentions and capability. For instance, a 4-3-3 formation can manifest as a staggered diamond in the midfield when the team is in possession. This allows for a strong pressing game and quick, dynamic wing play. Similarly, a 4-4-2 might shift to a flat four in midfield, offering a more balanced approach between attacking and defending.
+    """Understanding the offensive shape can reveal a side’s true intentions and capability. For instance, a 4-3-3 formation can manifest as a staggered diamond in the midfield when the team is in possession. This allows for a strong pressing game and quick, dynamic wing play. Similarly, a 4-4-2 might shift to a flat four in midfield, offering a more balanced approach between attacking and defending.
     
     A team’s defensive shape is equally illuminating; it’s their first line of resistance against the opponent’s advances. Traditionally, a team might drop into a 4-4-2 or a 5-4-1 when under pressure. However, it’s the intricacies of player positioning within these formations that truly dictate the team’s ability to close down spaces and mark opponents. This involves a mix of zonal marking and man-to-man coverage, all while maintaining the integrity of the defensive shape to avoid becoming disjointed.""",
 
