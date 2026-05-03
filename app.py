@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-import os
 
 st.set_page_config(
     page_title="My RAG-Football-Knowledge Base",
@@ -13,7 +12,7 @@ st.set_page_config(
 # Each string is one "document" that will be chunked, embedded, and
 # stored in the vector database for semantic search.
 # ──────────────────────────────────────────────────────────────────────
-DOCUMENTS = (
+DOCUMENTS = [
 
     """The most admitted story tells that the game was developed in England in the 12th century. In this century, games that resembled football were played on meadows and roads in England. Besides from kicks, the game involved also punches of the ball with the fist. This early form of football was also much more rough and violent than the modern way of playing. 
     
@@ -139,37 +138,27 @@ SLOVENIA WORLD CUP HISTORY: At the 2010 FIFA World Cup, Slovenia achieved its fi
 SLOVENIA EURO 2024: Slovenia reached the knockout stages of UEFA Euro 2024 for the first time after drawing all three group matches.
 SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which was Italy's only loss in their entire 2006 World Cup campaign.""",
 
-)
+]
 
 # ──────────────────────────────────────────────────────────────────────
-# Cached heavy resources (FAISS Optimized)
+# Cached heavy resources (loaded once, reused across reruns)
 # ──────────────────────────────────────────────────────────────────────
 
-@st.cache_resource(show_spinner="Connecting to Embedding API...")
+@st.cache_resource(show_spinner="Loading embedding model...")
 def load_embedding_model():
-    from langchain_huggingface import HuggingFaceEndpointEmbeddings
-    import os
-    
-    # This securely reads the token you just saved in Render
-    return HuggingFaceEndpointEmbeddings(
-        model="sentence-transformers/all-MiniLM-L6-v2",
-        huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN")
-    )
+    from langchain_huggingface import HuggingFaceEmbeddings
+    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 
-@st.cache_resource(show_spinner="Accessing vector database...")
-def build_vector_store(_documents: tuple):
-    """Chunk documents, embed them, and store/load in FAISS."""
+@st.cache_resource(show_spinner="Building vector database...")
+def build_vector_store(_documents: tuple    ):
+    """Chunk documents, embed them, and store in ChromaDB."""
     from langchain_text_splitters import RecursiveCharacterTextSplitter
-    from langchain_community.vectorstores import FAISS
-
-    embeddings = load_embedding_model()
-    index_path = "faiss_index"
+    from langchain_community.vectorstores import Chroma
 
     # --- Chunking ---
-    # We always need the chunks for statistics, so we split them here
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=200,
+        chunk_size=1000,
         chunk_overlap=50,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
@@ -177,19 +166,14 @@ def build_vector_store(_documents: tuple):
     for doc in _documents:
         chunks.extend(splitter.split_text(doc))
 
-    # --- Load or Build the FAISS Index ---
-    # If the index exists locally, load it instantly without generating new embeddings
-    if os.path.exists(index_path):
-        vector_store = FAISS.load_local(
-            index_path, 
-            embeddings, 
-            allow_dangerous_deserialization=True
-        )
-    else:
-        # If it's the first run, build it and save it to disk
-        vector_store = FAISS.from_texts(chunks, embeddings)
-        vector_store.save_local(index_path)
+    embeddings = load_embedding_model()
 
+    # --- Store in ChromaDB ---
+    vector_store = Chroma.from_texts(
+        texts=chunks,
+        embedding=embeddings,
+        collection_name="knowledge_base",
+    )
     return vector_store, chunks
 
 
@@ -212,7 +196,7 @@ with st.sidebar:
     st.divider()
     st.markdown("### 🟢 System Status")
     st.caption("Model: MiniLM-L6-v2")
-    st.caption("Database: FAISS (Optimized)")
+    st.caption("Database: ChromaDB (Active)")
 
 # ──────────────────────────────────────────────────────────────────────
 # HOME PAGE
@@ -232,7 +216,7 @@ if page == "Home":
         st.info("💡 **Pro Tip:** Try asking about the 'Origins of the game' or 'World Cup winners'.")
 
     with col2:
-        st.success(f"📈 **Database Stats**\n\n- {len(DOCUMENTS)} Documents\n- Vector Engine: FAISS (Optimized)\n- Model: MiniLM-L6-v2")
+        st.success(f"📈 **Database Stats**\n\n- {len(DOCUMENTS)} Documents\n- Vector Engine: ChromaDB\n- Model: MiniLM-L6-v2")
 
 # ──────────────────────────────────────────────────────────────────────
 # SEARCH PAGE
