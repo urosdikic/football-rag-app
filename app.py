@@ -226,7 +226,7 @@ if page == "Home":
         st.info("💡 **Pro Tip:** Try asking about the 'Origins of the game' or 'World Cup winners'.")
 
     with col2:
-        st.success(f"📈 **Database Stats**\n\n- {len(DOCUMENTS)} Documents\n- Vector Engine: ChromaDB\n- Model: MiniLM-L6-v2")
+        st.success(f"📈 **Database Stats**\n\n- {len(DOCUMENTS)} Documents\n- Vector Engine: FAISS (Optimized)\n- Model: MiniLM-L6-v2")
 
 # ──────────────────────────────────────────────────────────────────────
 # SEARCH PAGE
