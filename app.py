@@ -145,10 +145,16 @@ SLOVENIA VS ITALY 2004: Slovenia famously defeated Italy 1–0 in 2004, which wa
 # Cached heavy resources (FAISS Optimized)
 # ──────────────────────────────────────────────────────────────────────
 
-@st.cache_resource(show_spinner="Loading embedding model...")
+@st.cache_resource(show_spinner="Connecting to Embedding API...")
 def load_embedding_model():
-    from langchain_huggingface import HuggingFaceEmbeddings
-    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    from langchain_huggingface import HuggingFaceEndpointEmbeddings
+    import os
+    
+    # This securely reads the token you just saved in Render
+    return HuggingFaceEndpointEmbeddings(
+        model="sentence-transformers/all-MiniLM-L6-v2",
+        huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN")
+    )
 
 
 @st.cache_resource(show_spinner="Accessing vector database...")
