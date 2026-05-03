@@ -99,7 +99,7 @@ def build_vector_store(_documents: list    ):
 
     # --- Chunking ---
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=100,
+        chunk_size=1000,
         chunk_overlap=10,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
